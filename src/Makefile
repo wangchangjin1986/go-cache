@@ -1,0 +1,1 @@
+dep: git clone git://github.com/bradfitz/gomemcache
