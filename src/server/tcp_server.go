@@ -29,7 +29,7 @@ func (cs *TcpServer) waitforconn(ln net.Listener, c *cache.Cache) {
 				goto exit
 			}
 		}
-		tc := NewTcpClient(tconn, cs)
+		tc := NewTcpClient(tconn, c)
 		if cs.clientlist == nil {
 			runtime.Gosched()
 			continue

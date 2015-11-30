@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"net"
 	"strconv"
 	"strings"
 )
@@ -35,7 +36,7 @@ const (
 
 //request command
 const (
-	GET     CommandCode = "get"
+	GET     CommandCode = "gets"
 	SET     CommandCode = "set"
 	ADD     CommandCode = "add"
 	REPLACE CommandCode = "replace"
@@ -64,7 +65,7 @@ type MCRequest struct {
 	//请求内容
 	Value []byte
 	//请求标识
-	Flags int
+	Flags int32
 	//请求内容长度
 	Length int
 	//过期时间
@@ -80,7 +81,7 @@ type MCResponse struct {
 	//返回内容
 	Value []byte
 	//返回标识
-	Flags int
+	Flags int32
 	//错误
 	Fatal bool
 	//延时(ms)
@@ -108,7 +109,6 @@ func (req *MCRequest) Receive(r *bufio.Reader) error {
 	} else {
 		command = CommandCode(params[0])
 	}
-
 	switch command {
 
 	case SET, ADD, REPLACE:
@@ -143,7 +143,7 @@ func (req *MCRequest) Receive(r *bufio.Reader) error {
 }
 
 //解析response 并把返回结果写入socket链接
-func (res *MCResponse) Transmit(w io.Writer) (err error) {
+func (res *MCResponse) Transmit(w net.Conn) (err error) {
 	switch res.Status {
 	case ERROR, CLIENT_ERROR, SERVER_ERROR:
 		_, err = w.Write([]byte(res.Status.ToString()))
@@ -154,7 +154,12 @@ func (res *MCResponse) Transmit(w io.Writer) (err error) {
 		case GET:
 			if res.Status == SUCCESS {
 				rs := fmt.Sprintf("VALUE %s %d %d\r\n%s\r\nEND\r\n", res.Key, res.Flags, len(res.Value), res.Value)
-				_, err = w.Write([]byte(rs))
+				if _, err = w.Write([]byte(rs)); err != nil {
+					fmt.Println("response error")
+					return err
+				} else {
+					fmt.Println("response success")
+				}
 			} else {
 				_, err = w.Write([]byte(res.Status.ToString()))
 			}
@@ -165,6 +170,16 @@ func (res *MCResponse) Transmit(w io.Writer) (err error) {
 		}
 	}
 	return
+}
+func (res *MCResponse) GenerateRes(req *MCRequest) {
+
+}
+func NewResStatus(opcoed CommandCode, status Status) *MCResponse {
+	return &MCResponse{Opcoed: opcoed, Status: status}
+}
+func NewResFull(opcoed CommandCode, status Status, key string, flags int32, fatal bool) *MCResponse {
+	return &MCResponse{Opcoed: opcoed, Status: status, Key: key,
+		Flags: flags, Fatal: fatal}
 }
 
 //初始化response状态的返回结果

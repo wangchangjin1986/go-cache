@@ -1,5 +1,5 @@
 !<arch>
-__.PKGDEF       0           0     0     644     18225     `
+__.PKGDEF       0           0     0     644     18227     `
 go object linux amd64 go1.4.2 X:precisestack
 
 $$
@@ -30,7 +30,7 @@ package memcache
 	func (@"time".dÂ·2 @"time".Duration) Nanoseconds () (? int64) { return int64(@"time".dÂ·2) }
 	func (@"time".dÂ·2 @"time".Duration) Seconds () (? float64) { var @"time".secÂ·3 @"time".Duration; ; @"time".secÂ·3 = @"time".dÂ·2 / @"time".Duration(0x3B9ACA00); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0x3B9ACA00); return float64(@"time".secÂ·3) + float64(@"time".nsecÂ·4) * 0x112E0BE826D695p-82 }
 	func (@"time".dÂ·2 @"time".Duration) String () (? string)
-	const @"".DefaultTimeout @"time".Duration = 0x5F5E100
+	const @"".DefaultTimeout @"time".Duration = 0x3B9ACA00
 	type @"net".Addr interface { Network() (? string); String() (? string) }
 	type @"".ServerSelector interface { Each(? func(? @"net".Addr) (? error)) (? error); PickServer(@"".key string) (? @"net".Addr, ? error) }
 	type @"sync".Mutex struct { @"sync".state int32; @"sync".sema uint32 }
@@ -150,7 +150,7 @@ package memcache
 	func (@"".cÂ·3 *@"".Client) @"".getFreeConn (@"".addrÂ·4 @"net".Addr) (@"".cnÂ·1 *@"".conn, @"".okÂ·2 bool)
 	func (@"".cÂ·2 *@"".Client) @"".getFromAddr (@"".addrÂ·3 @"net".Addr, @"".keysÂ·4 []string "esc:0x0", @"".cbÂ·5 func(? *@"".Item) "esc:0x0") (? error)
 	func (@"".cÂ·3 *@"".Client) @"".incrDecr (@"".verbÂ·4 string, @"".keyÂ·5 string, @"".deltaÂ·6 uint64) (? uint64, ? error)
-	func (@"".cÂ·2 *@"".Client "esc:0x0") @"".netTimeout () (? @"time".Duration) { if @"".cÂ·2.Timeout != @"time".Duration(0x0) { return @"".cÂ·2.Timeout }; return @"time".Duration(0x5F5E100) }
+	func (@"".cÂ·2 *@"".Client "esc:0x0") @"".netTimeout () (? @"time".Duration) { if @"".cÂ·2.Timeout != @"time".Duration(0x0) { return @"".cÂ·2.Timeout }; return @"time".Duration(0x3B9ACA00) }
 	func (@"".cÂ·2 *@"".Client) @"".onItem (@"".itemÂ·3 *@"".Item, @"".fnÂ·4 func(? *@"".Client, ? *@"bufio".ReadWriter, ? *@"".Item) (? error) "esc:0x0") (? error)
 	func (@"".cÂ·2 *@"".Client "esc:0x0") @"".populateOne (@"".rwÂ·3 *@"bufio".ReadWriter, @"".verbÂ·4 string, @"".itemÂ·5 *@"".Item) (? error)
 	func (@"".cÂ·1 *@"".Client) @"".putFreeConn (@"".addrÂ·2 @"net".Addr, @"".cnÂ·3 *@"".conn)
@@ -206,7 +206,7 @@ net.astrconv.astrings.async.atime.ahash/crc32.a ş""".resumableError  à  Ø
 "".ss  ,type."".ServerSelector @a?@  üv  %C( TgclocalsÂ·3719f7ef83475fdfd86ee69e0815199e TgclocalsÂ·e1ae6533a9e39048ba0735a2264ce16a   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş$"".(*conn).release     ŒdH‹%    H;awè    ëêHƒì H‹D$(H‹p(H‰4$HpH\$H‰ßH¥H¥H‰D$è    HƒÄ Ã
          0runtime.morestack_noctxt   z  0"".(*Client).putFreeConn   @  
 "".cn  type.*"".conn @+? P à" 
- < TgclocalsÂ·519efd86263089ddb84df3cfe7fd2992 TgclocalsÂ·3280bececceccd33cb74587feedb1f9f   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş2"".(*conn).extendDeadline  À  ªdH‹%    H;awè    ëêHƒìxè    H‹4$‹T$H‹L$H‹œ$€   H‹C(H‹Hƒû „„   H‹ H‰t$`H‰4$‰T$h‰T$H‰L$pH‰L$H‰D$è    H‹|$ ‹t$(H‹T$0H‹œ$€   Hƒû t<H‹H‹kH‰|$HH‰|$‰t$P‰t$H‰T$XH‰T$H‰l$@H‰,$H‰L$8H‹Y@ÿÓHƒÄxÃ‰ëÀHÇÀ áõésÿÿÿ
+ < TgclocalsÂ·519efd86263089ddb84df3cfe7fd2992 TgclocalsÂ·3280bececceccd33cb74587feedb1f9f   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş2"".(*conn).extendDeadline  À  ªdH‹%    H;awè    ëêHƒìxè    H‹4$‹T$H‹L$H‹œ$€   H‹C(H‹Hƒû „„   H‹ H‰t$`H‰4$‰T$h‰T$H‰L$pH‰L$H‰D$è    H‹|$ ‹t$(H‹T$0H‹œ$€   Hƒû t<H‹H‹kH‰|$HH‰|$‰t$P‰t$H‰T$XH‰T$H‰l$@H‰,$H‰L$8H‹Y@ÿÓHƒÄxÃ‰ëÀHÇÀ Êš;ésÿÿÿ
 
          0runtime.morestack_noctxt   6  time.Now   Ò  time.Time.Add   ü 
       ğ  "".autotmp_0020 _type.time.Time "".autotmp_0019 /type.time.Time 
@@ -228,11 +228,11 @@ dH‹%    H;awè    ëêHì€   HÇ„$        Æ„$¨    Æ„$¨    HÇ„$        H‹œ$ˆ   H‰
       ğ  4type.map[string][]*"".conn   Ì  4runtime.mapaccess2_faststr   â 
       à  4type.map[string][]*"".conn   ¼  $runtime.mapassign1   Ø  &runtime.deferreturn   ò  $runtime.panicslice   €	  $runtime.panicindex   ¸	  &runtime.deferreturn   â	  &runtime.deferreturn   P€  "".autotmp_0044 /type.[]*"".conn "".autotmp_0043  type.int "".autotmp_0042 Ÿtype.string "".autotmp_0041  type.int "".autotmp_0039 type.string "".freelist _type.[]*"".conn 
 "".ok @type.bool 
-"".cn 0type.*"".conn "".addr type.net.Addr "".c  type.*"".Client N€m=ÿ€æÿ€/ÿ€ÿ€#   H¤E!6"‘‰" * aˆÈlF TgclocalsÂ·df54ade7c4fb2d03f334c99b9b890d0f TgclocalsÂ·a1202ce6bc7fe111017806ebcd440b84   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş."".(*Client).netTimeout  `  BH‹D$H‹Hƒû t	H‹(H‰l$ÃHÇD$ áõÃ     "".~r0 $type.time.Duration "".c  type.*"".Client 0 0 Â		  TgclocalsÂ·06cab038d51064a089bda21fa03e00f7 TgclocalsÂ·3280bececceccd33cb74587feedb1f9f   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş>"".(*ConnectTimeoutError).Error  à  ÎdH‹%    H;awè    ëêHƒìPHÇD$`    HÇD$h    H‹\$XHƒû tlH‹H‹kH‰l$8H‰,$H‰L$0H‹Y(ÿÓH‹L$H‹D$H    H,$H‰ïH‰ŞH¥H¥H‰L$@H‰L$H‰D$HH‰D$è    H‹\$ H‰\$`H‹\$(H‰\$hHƒÄPÃ‰ë
+"".cn 0type.*"".conn "".addr type.net.Addr "".c  type.*"".Client N€m=ÿ€æÿ€/ÿ€ÿ€#   H¤E!6"‘‰" * aˆÈlF TgclocalsÂ·df54ade7c4fb2d03f334c99b9b890d0f TgclocalsÂ·a1202ce6bc7fe111017806ebcd440b84   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş."".(*Client).netTimeout  `  BH‹D$H‹Hƒû t	H‹(H‰l$ÃHÇD$ Êš;Ã     "".~r0 $type.time.Duration "".c  type.*"".Client 0 0 Â		  TgclocalsÂ·06cab038d51064a089bda21fa03e00f7 TgclocalsÂ·3280bececceccd33cb74587feedb1f9f   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş>"".(*ConnectTimeoutError).Error  à  ÎdH‹%    H;awè    ëêHƒìPHÇD$`    HÇD$h    H‹\$XHƒû tlH‹H‹kH‰l$8H‰,$H‰L$0H‹Y(ÿÓH‹L$H‹D$H    H,$H‰ïH‰ŞH¥H¥H‰L$@H‰L$H‰D$HH‰D$è    H‹\$ H‰\$`H‹\$(H‰\$hHƒÄPÃ‰ë
 
          0runtime.morestack_noctxt     
       ¾  Rgo.string."memcache: connect timeout to "   Œ  *runtime.concatstring2   0   "".autotmp_0052 type.string "".~r0 type.string "".cte  8type.*"".ConnectTimeoutError  ˆŸ  ° Ş,„ 
- P` TgclocalsÂ·a08e9001cb8f9d822225de3b8e406515 TgclocalsÂ·44568aa369055d8938d809aa5d80843b   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş""".(*Client).dial     dH‹%    HD$àH;Awè    ëåHì    HÇ„$À       HÇ„$È       HÇ„$Ğ       HÇ„$Ø       H‹œ$¸   H‰$H‹œ$°   H‹[ ÿÓH‹\$H‰œ$   H‹\$H‰œ$˜   H‹œ$¸   H‰$H‹œ$°   H‹[(ÿÓH‹T$H‹L$H‹„$¨   H‹Hƒû „ü  H‹ H‹œ$   H‰$H‹œ$˜   H‰\$H‰”$€   H‰T$H‰Œ$ˆ   H‰L$H‰D$ è    H‹l$(H‰l$`H‹T$0H‰T$hH‹D$8H‹L$@Hƒø u0H‰¬$À   H‰”$È   HÇ„$Ğ       HÇ„$Ø       HÄ    ÃH    H‰$H‰D$pH‰D$H‰L$xH‰L$è    H‹T$H‹L$ ¶\$(€û „ò   H‰L$XH‰$H‰T$PH‹Z0ÿÓ¶\$€û „Ğ   H    H‰$è    H‹D$H‰D$HH‰$Hƒ<$ „›   H‹œ$°   H‰\$H‹œ$¸   H‰\$è    H‹\$HH‰\$HH‹    1íH9èt5HÇ„$À       HÇ„$È       H‹\$HH‰œ$Ø   H‰„$Ğ   HÄ    ÃH    H‰$H    H‰\$H    H‰\$è    H‹D$ëœ‰%    éYÿÿÿHÇ„$À       HÇ„$È       H‹\$pH‰œ$Ğ   H‹\$xH‰œ$Ø   HÄ    ÃHÇÀ áõéûıÿÿ 
+ P` TgclocalsÂ·a08e9001cb8f9d822225de3b8e406515 TgclocalsÂ·44568aa369055d8938d809aa5d80843b   ¤/home/wangchangjin/opensource_project/go-cache/src/gomemcache/memcache/memcache.goş""".(*Client).dial     dH‹%    HD$àH;Awè    ëåHì    HÇ„$À       HÇ„$È       HÇ„$Ğ       HÇ„$Ø       H‹œ$¸   H‰$H‹œ$°   H‹[ ÿÓH‹\$H‰œ$   H‹\$H‰œ$˜   H‹œ$¸   H‰$H‹œ$°   H‹[(ÿÓH‹T$H‹L$H‹„$¨   H‹Hƒû „ü  H‹ H‹œ$   H‰$H‹œ$˜   H‰\$H‰”$€   H‰T$H‰Œ$ˆ   H‰L$H‰D$ è    H‹l$(H‰l$`H‹T$0H‰T$hH‹D$8H‹L$@Hƒø u0H‰¬$À   H‰”$È   HÇ„$Ğ       HÇ„$Ø       HÄ    ÃH    H‰$H‰D$pH‰D$H‰L$xH‰L$è    H‹T$H‹L$ ¶\$(€û „ò   H‰L$XH‰$H‰T$PH‹Z0ÿÓ¶\$€û „Ğ   H    H‰$è    H‹D$H‰D$HH‰$Hƒ<$ „›   H‹œ$°   H‰\$H‹œ$¸   H‰\$è    H‹\$HH‰\$HH‹    1íH9èt5HÇ„$À       HÇ„$È       H‹\$HH‰œ$Ø   H‰„$Ğ   HÄ    ÃH    H‰$H    H‰\$H    H‰\$è    H‹D$ëœ‰%    éYÿÿÿHÇ„$À       HÇ„$È       H‹\$pH‰œ$Ğ   H‹\$xH‰œ$Ø   HÄ    ÃHÇÀ Êš;éûıÿÿ 
       *  0runtime.morestack_noctxt   Ô 
       ¼ 
       ö  net.DialTimeout   ¬  type.net.Error   æ  $runtime.assertI2I2   Â 
